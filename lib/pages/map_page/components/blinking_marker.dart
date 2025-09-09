@@ -17,7 +17,7 @@ class _BlinkingMarkerState extends State<BlinkingMarker>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 700),
+      duration: const Duration(milliseconds: 600),
     )..repeat(reverse: true);
   }
 
@@ -32,7 +32,7 @@ class _BlinkingMarkerState extends State<BlinkingMarker>
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
-        final scale = 1 + (_controller.value * 0.5);
+        final scale = 0.7 + (_controller.value * 0.5);
 
         return Stack(
           alignment: Alignment.center,
@@ -40,20 +40,13 @@ class _BlinkingMarkerState extends State<BlinkingMarker>
             Transform.scale(
               scale: scale,
               child: Container(
-                width: 70,
-                height: 70,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color.fromARGB(65, 6, 151, 255),
                 ),
               ),
             ),
-            Image.network(
-              widget.img,
-              width: 80,
-              height: 80,
-              fit: BoxFit.contain,
-            ),
+            Image.network(widget.img, fit: BoxFit.contain),
           ],
         );
       },

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AboutPage extends StatelessWidget {
+class CrewPage extends StatelessWidget {
   final String title;
   final IconData icon;
 
-  const AboutPage({super.key, required this.title, required this.icon});
+  const CrewPage({super.key, required this.title, required this.icon});
 
   @override
   Widget build(BuildContext context) {

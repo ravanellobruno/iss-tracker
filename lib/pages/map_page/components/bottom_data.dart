@@ -22,13 +22,11 @@ class BottomData extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Lat: ${latitude.toStringAsFixed(6)}  •  Lng: ${longitude.toStringAsFixed(6)}',
-              style: Theme.of(context).textTheme.bodyMedium,
+              'Latitude: ${latitude.toStringAsFixed(6)}  •  Longitude: ${longitude.toStringAsFixed(6)}',
             ),
             const SizedBox(height: 6),
             if (address != null)
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Icon(Icons.place, size: 16),
                   const SizedBox(width: 6),
