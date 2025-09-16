@@ -151,7 +151,7 @@ class _MapPageState extends State<MapPage> {
       ),
       body:
           _coords == null
-              ? MapLoading()
+              ? const MapLoading()
               : Column(
                 children: [
                   Map(
@@ -162,7 +162,7 @@ class _MapPageState extends State<MapPage> {
                     },
                   ),
                   !_hasNewCoords
-                      ? Text(
+                      ? const Text(
                         'Sem coordenadas atualizadas no momento. Aguarde..',
                       )
                       : BottomData(
