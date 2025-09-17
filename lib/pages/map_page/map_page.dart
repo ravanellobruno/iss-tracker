@@ -4,7 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geocoding/geocoding.dart';
 import 'components/bottom_data.dart';
-import 'components/map_loading.dart';
+import '../../components/loading.dart';
 import '../../services/iss_service.dart';
 import 'components/map.dart';
 import 'components/top_bar.dart';
@@ -151,7 +151,7 @@ class _MapPageState extends State<MapPage> {
       ),
       body:
           _coords == null
-              ? const MapLoading()
+              ? const Loading()
               : Column(
                 children: [
                   Map(

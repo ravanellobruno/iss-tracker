@@ -17,8 +17,8 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() => _selectedIndex = index);
+  void _onItemTapped(int i) {
+    setState(() => _selectedIndex = i);
   }
 
   @override

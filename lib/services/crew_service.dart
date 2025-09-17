@@ -1,23 +1,23 @@
-import 'package:http/http.dart' as http;
-import 'package:html/parser.dart' as parser;
-import 'package:html/dom.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class CrewService {
   static const String _url = 'https://whoisinspace.com/';
 
-  static Future<Document?> getData() async {
-    try {
-      final res = await http
-          .get(Uri.parse(_url))
-          .timeout(const Duration(seconds: 6));
+  static Future<WebViewController> createController({
+    required void Function(String url) onPageStarted,
+    required void Function(String url) onPageFinished,
+  }) async {
+    final controller =
+        WebViewController()
+          ..setJavaScriptMode(JavaScriptMode.unrestricted)
+          ..setNavigationDelegate(
+            NavigationDelegate(
+              onPageStarted: onPageStarted,
+              onPageFinished: onPageFinished,
+            ),
+          )
+          ..loadRequest(Uri.parse(_url));
 
-      if (res.statusCode != 200) {
-        return null;
-      }
-
-      return parser.parse(res.body);
-    } catch (_) {
-      return null;
-    }
+    return controller;
   }
 }

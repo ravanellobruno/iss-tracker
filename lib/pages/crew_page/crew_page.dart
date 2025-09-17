@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import '../../components/loading.dart';
 import '../../services/crew_service.dart';
 
 class CrewPage extends StatefulWidget {
@@ -12,27 +14,31 @@ class CrewPage extends StatefulWidget {
 }
 
 class _CrewPageState extends State<CrewPage> {
-  bool _hasFailed = false;
-  String _scrapedData = 'Carregando...';
+  WebViewController? _controller;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    fetchData();
+    _initializeWebView();
   }
 
-  Future<void> fetchData() async {
-    final doc = await CrewService.getData();
-
-    if (doc == null) {
-      setState(() => _hasFailed = true);
-      return;
-    }
-
-    final h1Tag = doc.getElementsByTagName('h1').first.text;
+  Future<void> _initializeWebView() async {
+    final controller = await CrewService.createController(
+      onPageStarted: (url) {
+        setState(() {
+          _isLoading = true;
+        });
+      },
+      onPageFinished: (url) {
+        setState(() {
+          _isLoading = false;
+        });
+      },
+    );
 
     setState(() {
-      _scrapedData = h1Tag;
+      _controller = controller;
     });
   }
 
@@ -48,15 +54,27 @@ class _CrewPageState extends State<CrewPage> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child:
-            _hasFailed
-                ? const Text(
-                  'Não foi possível carregar os dados. Tente novamente mais tarde.',
+      body: Stack(
+        children: [
+          Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  'Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste ',
                   style: TextStyle(fontSize: 17),
-                )
-                : Text(_scrapedData, style: const TextStyle(fontSize: 17)),
+                ),
+              ),
+              Expanded(
+                child:
+                    _controller != null
+                        ? WebViewWidget(controller: _controller!)
+                        : const SizedBox(),
+              ),
+            ],
+          ),
+          if (_isLoading) const Loading(),
+        ],
       ),
     );
   }

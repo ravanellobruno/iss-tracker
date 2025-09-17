@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MapLoading extends StatelessWidget {
-  const MapLoading({super.key});
+class Loading extends StatelessWidget {
+  const Loading({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class MapLoading extends StatelessWidget {
         children: [
           CircularProgressIndicator(),
           SizedBox(height: 12),
-          Text('Obtendo posição da ISS...'),
+          Text('Carregando dados...'),
         ],
       ),
     );

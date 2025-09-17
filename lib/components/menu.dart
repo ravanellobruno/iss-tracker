@@ -17,15 +17,15 @@ class Menu extends StatelessWidget {
             padding: const EdgeInsets.all(30),
             child: Text(appTitle, style: const TextStyle(fontSize: 16)),
           ),
-          ...List.generate(routes.length, (index) {
-            final route = routes[index];
+          ...List.generate(routes.length, (i) {
+            final route = routes[i];
 
             return ListTile(
               leading: Icon(route.icon),
               title: Text(route.label),
               onTap: () {
                 Navigator.pop(context);
-                onItemTapped(index);
+                onItemTapped(i);
               },
             );
           }),
