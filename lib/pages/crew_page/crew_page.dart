@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../components/loading.dart';
+import '../../components/no_data.dart';
 import '../../services/crew_service.dart';
 
 class CrewPage extends StatefulWidget {
@@ -16,6 +17,7 @@ class CrewPage extends StatefulWidget {
 class _CrewPageState extends State<CrewPage> {
   WebViewController? _controller;
   bool _isLoading = true;
+  bool _hasError = false;
 
   @override
   void initState() {
@@ -24,22 +26,11 @@ class _CrewPageState extends State<CrewPage> {
   }
 
   Future<void> _initializeWebView() async {
-    final controller = await CrewService.createController(
-      onPageStarted: (url) {
-        setState(() {
-          _isLoading = true;
-        });
-      },
-      onPageFinished: (url) {
-        setState(() {
-          _isLoading = false;
-        });
-      },
+    _controller = await CrewService.createController(
+      onPageStarted: (_) => setState(() => _isLoading = true),
+      onPageFinished: (_) => setState(() => _isLoading = false),
+      onWebResourceError: (_) => setState(() => _hasError = true),
     );
-
-    setState(() {
-      _controller = controller;
-    });
   }
 
   @override
@@ -59,17 +50,40 @@ class _CrewPageState extends State<CrewPage> {
           Column(
             children: [
               const Padding(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                 child: Text(
-                  'Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste ',
+                  'Abaixo você pode conhecer os astronautas que estão a bordo da ISS e também os que estão na Tiangong (Estação Espacial Chinesa).',
                   style: TextStyle(fontSize: 17),
                 ),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Isto é um frame de: ',
+                    style: TextStyle(fontSize: 15),
+                  ),
+                  InkWell(
+                    onTap: CrewService.openLink,
+                    child: const Text(
+                      'whoisinspace.com',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               Expanded(
                 child:
-                    _controller != null
-                        ? WebViewWidget(controller: _controller!)
-                        : const SizedBox(),
+                    _hasError
+                        ? const NoData()
+                        : (_controller != null
+                            ? WebViewWidget(controller: _controller!)
+                            : const SizedBox()),
               ),
             ],
           ),
