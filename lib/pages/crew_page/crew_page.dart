@@ -3,6 +3,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../../components/loading.dart';
 import '../../components/no_data.dart';
 import '../../services/crew_service.dart';
+import '../../utils/link_util.dart';
 
 class CrewPage extends StatefulWidget {
   final String title;
@@ -64,7 +65,7 @@ class _CrewPageState extends State<CrewPage> {
                     style: TextStyle(fontSize: 15),
                   ),
                   InkWell(
-                    onTap: CrewService.openLink,
+                    onTap: () => LinkUtil.openLink('https://whoisinspace.com/'),
                     child: const Text(
                       'whoisinspace.com',
                       style: TextStyle(

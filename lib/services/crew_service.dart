@@ -1,4 +1,3 @@
-import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class CrewService {
@@ -22,9 +21,5 @@ class CrewService {
           ..loadRequest(Uri.parse(_url));
 
     return controller;
-  }
-
-  static Future<void> openLink() async {
-    await launchUrl(Uri.parse(_url));
   }
 }
