@@ -8,6 +8,19 @@ class LivePage extends StatelessWidget {
 
   const LivePage({super.key, required this.title, required this.icon});
 
+  Widget _player(String videoId) {
+    final YoutubePlayerController controller = YoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(autoPlay: false, mute: false),
+    );
+
+    return YoutubePlayer(
+      controller: controller,
+      showVideoProgressIndicator: true,
+      progressIndicatorColor: Colors.red,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +40,9 @@ class LivePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-            _buildYoutubePlayer('fO9e9jnhYK8'),
+            _player('fO9e9jnhYK8'),
             const SizedBox(height: 24),
-            _buildYoutubePlayer('b_4mCNb826Y'),
-            const SizedBox(height: 24),
-            _buildYoutubePlayer('rwZq7Wp3fis'),
+            _player('j-b4xtjOrqo'),
             const SizedBox(height: 12),
             InkWell(
               onTap:
@@ -52,19 +63,6 @@ class LivePage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildYoutubePlayer(String videoId) {
-    final YoutubePlayerController controller = YoutubePlayerController(
-      initialVideoId: videoId,
-      flags: const YoutubePlayerFlags(autoPlay: false, mute: false),
-    );
-
-    return YoutubePlayer(
-      controller: controller,
-      showVideoProgressIndicator: true,
-      progressIndicatorColor: Colors.red,
     );
   }
 }
