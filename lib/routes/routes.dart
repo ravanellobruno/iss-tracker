@@ -35,23 +35,23 @@ final List<AppRoute> routes = [
     label: Labels.live,
   ),
   AppRoute(
-    page: Model3dPage(title: Labels.model3d, icon: Icons.satellite_alt),
-    icon: Icons.satellite_alt,
-    label: Labels.model3d,
-  ),
-  AppRoute(
     page: CrewPage(title: Labels.crew, icon: Icons.group),
     icon: Icons.group,
     label: Labels.crew,
   ),
   AppRoute(
-    page: AboutPage(title: Labels.about, icon: Icons.info),
-    icon: Icons.info,
-    label: Labels.about,
-  ),
-  AppRoute(
     page: DataPage(title: Labels.data, icon: Icons.data_object),
     icon: Icons.data_object,
     label: Labels.data,
+  ),
+  AppRoute(
+    page: Model3dPage(title: Labels.model3d, icon: Icons.satellite_alt),
+    icon: Icons.satellite_alt,
+    label: Labels.model3d,
+  ),
+  AppRoute(
+    page: AboutPage(title: Labels.about, icon: Icons.info),
+    icon: Icons.info,
+    label: Labels.about,
   ),
 ];

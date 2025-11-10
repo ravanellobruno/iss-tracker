@@ -53,7 +53,7 @@ class _CrewPageState extends State<CrewPage> {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                 child: Text(
-                  'Abaixo você pode conhecer os astronautas que estão a bordo da ISS e também os que estão na Tiangong (Estação Espacial Chinesa).',
+                  'Role o frame para conhecer os astronautas que estão a bordo da ISS e também os da Tiangong (Estação Espacial Chinesa).',
                   style: TextStyle(fontSize: 17),
                 ),
               ),
@@ -62,7 +62,7 @@ class _CrewPageState extends State<CrewPage> {
                 children: [
                   const Text(
                     'Isto é um frame de: ',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 14),
                   ),
                   InkWell(
                     onTap: () => LinkUtil.openLink('https://whoisinspace.com/'),
@@ -72,19 +72,22 @@ class _CrewPageState extends State<CrewPage> {
                         color: Colors.blue,
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.w600,
-                        fontSize: 15,
+                        fontSize: 14,
                       ),
                     ),
                   ),
                 ],
               ),
               Expanded(
-                child:
-                    _hasError
-                        ? const NoData()
-                        : (_controller != null
-                            ? WebViewWidget(controller: _controller!)
-                            : const SizedBox()),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child:
+                      _hasError
+                          ? const NoData()
+                          : (_controller != null
+                              ? WebViewWidget(controller: _controller!)
+                              : const SizedBox()),
+                ),
               ),
             ],
           ),

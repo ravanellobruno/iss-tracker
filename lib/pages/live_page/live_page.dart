@@ -1,25 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../../utils/link_util.dart';
+import '../../components/video_player.dart';
 
 class LivePage extends StatelessWidget {
   final String title;
   final IconData icon;
 
   const LivePage({super.key, required this.title, required this.icon});
-
-  Widget _player(String videoId) {
-    final YoutubePlayerController controller = YoutubePlayerController(
-      initialVideoId: videoId,
-      flags: const YoutubePlayerFlags(autoPlay: false, mute: false),
-    );
-
-    return YoutubePlayer(
-      controller: controller,
-      showVideoProgressIndicator: true,
-      progressIndicatorColor: Colors.red,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,37 +17,39 @@ class LivePage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-              child: Text(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Column(
+            children: [
+              const Text(
                 'Nos vídeos abaixo você terá a visão ao vivo da Terra diretamente das câmeras da ISS.',
                 style: TextStyle(fontSize: 17),
               ),
-            ),
-            const SizedBox(height: 12),
-            _player('fO9e9jnhYK8'),
-            const SizedBox(height: 24),
-            _player('j-b4xtjOrqo'),
-            const SizedBox(height: 12),
-            InkWell(
-              onTap:
-                  () => LinkUtil.openLink(
-                    'https://www.youtube.com/results?search_query=iss+live+now',
+              const SizedBox(height: 16),
+              VideoPlayer(videoId: 'fO9e9jnhYK8'),
+              const SizedBox(height: 24),
+              VideoPlayer(videoId: 'j-b4xtjOrqo'),
+              const SizedBox(height: 24),
+              Center(
+                child: InkWell(
+                  onTap:
+                      () => LinkUtil.openLink(
+                        'https://www.youtube.com/results?search_query=iss+live+now',
+                      ),
+                  child: const Text(
+                    'Clique aqui para mais vídeos',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
                   ),
-              child: const Text(
-                'Clique aqui para encontrar mais vídeos',
-                style: TextStyle(
-                  color: Colors.blue,
-                  decoration: TextDecoration.underline,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
                 ),
               ),
-            ),
-            const SizedBox(height: 46),
-          ],
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );
