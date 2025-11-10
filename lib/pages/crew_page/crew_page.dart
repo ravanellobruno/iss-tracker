@@ -51,7 +51,7 @@ class _CrewPageState extends State<CrewPage> {
           Column(
             children: [
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 child: Text(
                   'Role o frame para conhecer os astronautas que estão a bordo da ISS e também os da Tiangong (Estação Espacial Chinesa).',
                   style: TextStyle(fontSize: 17),
@@ -80,7 +80,7 @@ class _CrewPageState extends State<CrewPage> {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  padding: const EdgeInsets.symmetric(horizontal: 38),
                   child:
                       _hasError
                           ? const NoData()

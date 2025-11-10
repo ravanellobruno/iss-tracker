@@ -16,12 +16,7 @@ class DataPage extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          child: Text(
-            'teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
+        child: SingleChildScrollView(),
       ),
     );
   }

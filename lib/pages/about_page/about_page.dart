@@ -15,7 +15,7 @@ class AboutPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,12 +25,7 @@ class AboutPage extends StatelessWidget {
                 style: TextStyle(fontSize: 17),
               ),
               const SizedBox(height: 12),
-              Center(
-                child: Image.asset(
-                  'lib/assets/images/iss_astronaut.gif',
-                  height: 250,
-                ),
-              ),
+              Center(child: Image.asset('lib/assets/images/iss.jpg')),
             ],
           ),
         ),
