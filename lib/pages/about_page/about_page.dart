@@ -15,11 +15,23 @@ class AboutPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: SingleChildScrollView(
-          child: Text(
-            'teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste teste',
-            style: TextStyle(fontSize: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Este aplicativo tem caráter educativo e é dedicado à Estação Espacial Internacional (ISS). Através dele, você pode acompanhar a localização em tempo real da ISS, assistir a transmissões ao vivo da Terra vistas diretamente da estação, conhecer a tripulação atual e explorar dados e curiosidades sobre essa impressionante estrutura que orbita o nosso planeta.',
+                style: TextStyle(fontSize: 17),
+              ),
+              const SizedBox(height: 12),
+              Center(
+                child: Image.asset(
+                  'lib/assets/images/iss_astronaut.gif',
+                  height: 250,
+                ),
+              ),
+            ],
           ),
         ),
       ),
