@@ -52,8 +52,7 @@ class Map extends StatelessWidget {
                 width: 90,
                 height: 90,
                 child: const BlinkingMarker(
-                  img:
-                      'https://upload.wikimedia.org/wikipedia/commons/f/f2/ISS_spacecraft_model_1.png',
+                  img: 'lib/assets/images/iss_pin.png',
                 ),
               ),
             ],

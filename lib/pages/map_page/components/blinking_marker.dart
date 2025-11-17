@@ -46,7 +46,7 @@ class _BlinkingMarkerState extends State<BlinkingMarker>
                 ),
               ),
             ),
-            Image.network(widget.img, fit: BoxFit.contain),
+            Image.asset(widget.img, fit: BoxFit.contain),
           ],
         );
       },

@@ -28,7 +28,7 @@ class AboutPage extends StatelessWidget {
                     'Este aplicativo tem caráter educativo e é dedicado à Estação Espacial Internacional (ISS). Através dele, você pode acompanhar a localização em tempo real da ISS, assistir a transmissões ao vivo da Terra vistas diretamente da estação, conhecer a tripulação atual e explorar dados e curiosidades sobre essa impressionante estrutura que orbita o nosso planeta.',
               ),
               const SizedBox(height: 12),
-              const Text('Créditos para:'),
+              const Text('Referências:'),
               const LinkText(
                 text: 'nasa.gov/international-space-station',
                 url: 'https://www.nasa.gov/international-space-station/',
