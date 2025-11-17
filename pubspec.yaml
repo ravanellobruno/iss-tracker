@@ -71,6 +71,9 @@ flutter:
   assets:
     - lib/assets/images/iss_astronaut.gif
     - lib/assets/images/iss.jpg
+    - lib/assets/images/iss_inside.jpg
+    - lib/assets/images/iss_vid.gif
+    - lib/assets/images/iss_emblem.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../components/loading.dart';
 import '../../components/no_data.dart';
+import '../../components/intro_text.dart';
 import '../../services/model_3d_service.dart';
-import '../../utils/link_util.dart';
 
 class Model3dPage extends StatefulWidget {
   final String title;
@@ -49,36 +49,12 @@ class _Model3dPageState extends State<Model3dPage> {
       body: Stack(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             child: Column(
               children: [
-                const Text(
-                  'Arraste para a direita ou esquerda e segure para rotacionar. Você também pode aproximar ou afastar.',
-                  style: TextStyle(fontSize: 17),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Isto é um frame de: ',
-                      style: TextStyle(fontSize: 14),
-                    ),
-                    InkWell(
-                      onTap:
-                          () => LinkUtil.openLink(
-                            'https://solarsystem.nasa.gov/gltf_embed/2378/',
-                          ),
-                      child: const Text(
-                        'solarsystem.nasa.gov',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ],
+                const IntroText(
+                  text:
+                      'Arraste para a direita ou esquerda e segure para rotacionar. Você também pode aproximar ou afastar.',
                 ),
                 SizedBox(
                   height: 450,

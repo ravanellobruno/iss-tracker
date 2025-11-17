@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../utils/link_util.dart';
+import '../../components/link_text.dart';
 import '../../components/video_player.dart';
+import '../../components/intro_text.dart';
 
 class LivePage extends StatelessWidget {
   final String title;
@@ -18,12 +19,12 @@ class LivePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
-              const Text(
-                'Nos vídeos abaixo você terá a visão ao vivo da Terra diretamente das câmeras da ISS.',
-                style: TextStyle(fontSize: 17),
+              const IntroText(
+                text:
+                    'Nos vídeos abaixo você terá a visão ao vivo da Terra diretamente das câmeras da ISS.',
               ),
               const SizedBox(height: 16),
               VideoPlayer(videoId: 'fO9e9jnhYK8'),
@@ -31,20 +32,10 @@ class LivePage extends StatelessWidget {
               VideoPlayer(videoId: 'j-b4xtjOrqo'),
               const SizedBox(height: 24),
               Center(
-                child: InkWell(
-                  onTap:
-                      () => LinkUtil.openLink(
-                        'https://www.youtube.com/results?search_query=iss+live+now',
-                      ),
-                  child: const Text(
-                    'Clique aqui para mais vídeos',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
+                child: const LinkText(
+                  text: 'Clique aqui para mais vídeos',
+                  url:
+                      'https://www.youtube.com/results?search_query=iss+live+now',
                 ),
               ),
               const SizedBox(height: 40),

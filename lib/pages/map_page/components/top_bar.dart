@@ -15,7 +15,6 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color.fromARGB(255, 217, 229, 237),
       title: Row(
         children: [
           Icon(icon),

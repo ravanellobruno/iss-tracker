@@ -33,6 +33,17 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: MyApp.appTitle,
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 17),
+          bodyMedium: TextStyle(fontSize: 17),
+          bodySmall: TextStyle(fontSize: 17),
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF0D47A1),
+          foregroundColor: Colors.white,
+        ),
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text(

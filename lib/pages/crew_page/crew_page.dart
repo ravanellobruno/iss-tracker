@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../components/loading.dart';
 import '../../components/no_data.dart';
+import '../../components/intro_text.dart';
 import '../../services/crew_service.dart';
-import '../../utils/link_util.dart';
 
 class CrewPage extends StatefulWidget {
   final String title;
@@ -51,32 +51,11 @@ class _CrewPageState extends State<CrewPage> {
           Column(
             children: [
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                child: Text(
-                  'Role o frame para conhecer os astronautas que estão a bordo da ISS e também os da Tiangong (Estação Espacial Chinesa).',
-                  style: TextStyle(fontSize: 17),
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                child: IntroText(
+                  text:
+                      'Role o frame para conhecer os astronautas que estão a bordo da ISS e também os da Tiangong (Estação Espacial Chinesa).',
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Isto é um frame de: ',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  InkWell(
-                    onTap: () => LinkUtil.openLink('https://whoisinspace.com/'),
-                    child: const Text(
-                      'whoisinspace.com',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                ],
               ),
               Expanded(
                 child: Padding(
