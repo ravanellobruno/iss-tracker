@@ -27,6 +27,12 @@ class VideoPlayer extends StatelessWidget {
               fit: BoxFit.cover,
               width: double.infinity,
               height: 200,
+              errorBuilder: (context, err, stackTrace) {
+                return Image.asset(
+                  'lib/assets/images/iss_vid.gif',
+                  fit: BoxFit.cover,
+                );
+              },
             ),
           ),
           Container(

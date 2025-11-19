@@ -17,17 +17,19 @@ class MainDataRow extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Text(
-              label,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            Text(value),
-          ],
-        ),
-        Text(description),
         const Divider(),
+        SizedBox(height: 4),
+        Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+        Text(
+          value,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.indigo,
+          ),
+        ),
+        SizedBox(height: 7),
+        Text(description),
+        SizedBox(height: 4),
       ],
     );
   }
