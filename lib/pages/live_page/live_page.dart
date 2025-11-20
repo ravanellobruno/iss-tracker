@@ -24,12 +24,10 @@ class LivePage extends StatelessWidget {
             children: [
               const IntroText(
                 text:
-                    'Nos vídeos abaixo você terá a visão ao vivo da Terra diretamente das câmeras da ISS.',
+                    'No vídeo abaixo você terá a visão ao vivo da Terra diretamente das câmeras da ISS.',
               ),
               const SizedBox(height: 16),
               VideoPlayer(videoId: 'fO9e9jnhYK8'),
-              const SizedBox(height: 24),
-              VideoPlayer(videoId: 'j-b4xtjOrqo'),
               const SizedBox(height: 24),
               Center(
                 child: const LinkText(
