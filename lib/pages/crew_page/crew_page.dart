@@ -3,7 +3,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../../components/loading.dart';
 import '../../components/no_data.dart';
 import '../../components/intro_text.dart';
-import '../../services/crew_service.dart';
+import '../../services/webview_service.dart';
 
 class CrewPage extends StatefulWidget {
   final String title;
@@ -27,11 +27,18 @@ class _CrewPageState extends State<CrewPage> {
   }
 
   Future<void> _initializeWebView() async {
-    _controller = await CrewService.createController(
+    const url = 'https://whoisinspace.com/';
+
+    _controller = await WebViewService.createController(
+      url: url,
       onPageStarted: (_) => setState(() => _isLoading = true),
       onPageFinished: (_) => setState(() => _isLoading = false),
       onWebResourceError: (_) => setState(() => _hasError = true),
     );
+
+    if (mounted && WebViewService.isLoaded(url)) {
+      setState(() => _isLoading = false);
+    }
   }
 
   @override

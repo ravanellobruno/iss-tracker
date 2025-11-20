@@ -1,24 +1,36 @@
 import 'package:webview_flutter/webview_flutter.dart';
 
-class Model3dService {
-  static const String _url = 'https://solarsystem.nasa.gov/gltf_embed/2378/';
+class WebViewService {
+  static final Map<String, WebViewController> _cachedControllers = {};
+  static final Map<String, bool> _isLoaded = {};
+  static bool isLoaded(String url) => _isLoaded[url] ?? false;
 
   static Future<WebViewController> createController({
+    required String url,
     required void Function(String) onPageStarted,
     required void Function(String) onPageFinished,
     required void Function(WebResourceError) onWebResourceError,
   }) async {
+    if (_cachedControllers.containsKey(url)) {
+      return _cachedControllers[url]!;
+    }
+
     final controller =
         WebViewController()
           ..setJavaScriptMode(JavaScriptMode.unrestricted)
           ..setNavigationDelegate(
             NavigationDelegate(
               onPageStarted: onPageStarted,
-              onPageFinished: onPageFinished,
+              onPageFinished: (u) {
+                _isLoaded[url] = true;
+                onPageFinished(u);
+              },
               onWebResourceError: onWebResourceError,
             ),
           )
-          ..loadRequest(Uri.parse(_url));
+          ..loadRequest(Uri.parse(url));
+
+    _cachedControllers[url] = controller;
 
     return controller;
   }

@@ -3,7 +3,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../../components/loading.dart';
 import '../../components/no_data.dart';
 import '../../components/intro_text.dart';
-import '../../services/model_3d_service.dart';
+import '../../services/webview_service.dart';
 
 class Model3dPage extends StatefulWidget {
   final String title;
@@ -27,11 +27,18 @@ class _Model3dPageState extends State<Model3dPage> {
   }
 
   Future<void> _initializeWebView() async {
-    _controller = await Model3dService.createController(
+    const url = 'https://solarsystem.nasa.gov/gltf_embed/2378/';
+
+    _controller = await WebViewService.createController(
+      url: url,
       onPageStarted: (_) => setState(() => _isLoading = true),
       onPageFinished: (_) => setState(() => _isLoading = false),
       onWebResourceError: (_) => setState(() => _hasError = true),
     );
+
+    if (mounted && WebViewService.isLoaded(url)) {
+      setState(() => _isLoading = false);
+    }
   }
 
   @override
